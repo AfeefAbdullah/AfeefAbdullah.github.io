@@ -141,6 +141,11 @@ function onScroll() {
       const r = timeline.getBoundingClientRect();
       const p = Math.min(1, Math.max(0, (window.innerHeight * 0.6 - r.top) / r.height));
       timeline.style.setProperty("--fill", p.toFixed(3));
+      // Light up each dot once the fill line reaches it (dot center is ~13px below the item top).
+      const fillPx = 8 + (r.height - 16) * p;
+      timeline.querySelectorAll(".timeline__item").forEach((item) => {
+        item.classList.toggle("passed", p > 0 && item.offsetTop + 13 <= fillPx + 1);
+      });
     }
     lastY = y;
     ticking = false;

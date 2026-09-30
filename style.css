@@ -736,6 +736,14 @@ ul {
   margin: 28px 0 16px;
 }
 
+.contact__links .btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  margin-right: 10px;
+  flex: none;
+}
+
 .contact__loc {
   color: var(--muted);
   margin: 0;
@@ -978,6 +986,21 @@ ul {
   height: calc((100% - 16px) * var(--fill, 0));
   background: var(--grad);
   box-shadow: 0 0 12px rgba(124, 92, 255, 0.7);
+}
+.timeline__item::before {
+  z-index: 1;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.3, 1.8, 0.5, 1);
+}
+.timeline__item.passed::before {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.18), 0 0 14px rgba(34, 211, 238, 0.6);
+  transform: scale(1.15);
+}
+.timeline__item--current.passed::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.2);
 }
 .timeline__item--current::before {
   animation: ping 2s infinite;
