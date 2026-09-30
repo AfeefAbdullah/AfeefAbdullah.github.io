@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1.2" />
+    <link rel="stylesheet" href="style.css?v=1.3" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"></div>
@@ -175,28 +175,13 @@
             <p class="eyebrow">Toolbox</p>
             <h2>Skills</h2>
           </div>
-          <div class="skills">
-            <div class="skill-card">
-              <h3>Gameplay &amp; Engine</h3>
-              <ul class="chips">
-                <li>Unity (C#)</li><li>Gameplay Programming</li><li>Mobile Game Development</li>
-                <li>2D &amp; 3D Physics</li><li>Game UI / HUD</li><li>Unreal Engine 5 (C++)</li>
-              </ul>
+          <div class="loadout">
+            <div class="loadout__bar">
+              <span class="loadout__title">Loadout</span>
+              <span class="loadout__class">Class: <b>Unity Game Developer</b></span>
             </div>
-            <div class="skill-card">
-              <h3>Monetization &amp; Live Ops</h3>
-              <ul class="chips">
-                <li>AdMob</li><li>AppLovin MAX</li><li>Ads Mediation &amp; Wrappers</li>
-                <li>Firebase Analytics</li><li>Crashlytics</li><li>Remote Config</li><li>GameAnalytics</li>
-              </ul>
-            </div>
-            <div class="skill-card">
-              <h3>Engineering</h3>
-              <ul class="chips">
-                <li>Debugging</li><li>Performance Optimization</li><li>SDK Conflict Resolution</li>
-                <li>Git / Version Control</li><li>Google Play Releases</li>
-              </ul>
-            </div>
+            <div class="loadout__tabs" role="tablist" aria-label="Skill categories" id="loadout-tabs"></div>
+            <div class="loadout__grid" id="loadout-grid" role="tabpanel"></div>
           </div>
         </div>
       </section>
@@ -268,6 +253,6 @@
     <a href="#top" class="to-top" aria-label="Back to top">↑</a>
     <div class="toast" id="toast" role="status"></div>
 
-    <script src="script.js?v=1.2"></script>
+    <script src="script.js?v=1.3"></script>
   </body>
 </html>
