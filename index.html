@@ -2,383 +2,265 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Syed Afeef Abdullah — Game Developer</title>
+    <meta
+      name="description"
+      content="Syed Afeef Abdullah — Unity game developer from Lahore building mobile games from scratch, with ad monetization, live ops and AI-assisted development."
+    />
+    <meta property="og:title" content="Syed Afeef Abdullah — Game Developer" />
+    <meta
+      property="og:description"
+      content="Unity (C#) mobile games built from scratch — gameplay, monetization, analytics and live ops."
+    />
+    <meta name="theme-color" content="#0b0d14" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
-    <nav id="desktop-nav">
-      <div class="logo">Afeef Abdullah</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+    <header class="nav" id="top">
+      <div class="container nav__inner">
+        <a href="#top" class="nav__logo">afeef<span>.dev</span></a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav__links" id="nav-links">
+          <a href="#games" onclick="closeMenu()">Games</a>
+          <a href="#experience" onclick="closeMenu()">Experience</a>
+          <a href="#skills" onclick="closeMenu()">Skills</a>
+          <a href="#ai" onclick="closeMenu()">AI Workflow</a>
+          <a href="#contact" class="nav__cta" onclick="closeMenu()">Contact</a>
+        </nav>
       </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Afeef Arcade</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="John Doe profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Afeef Abdullah</h1>
-        <p class="section__text__p2">Game Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://linkedin.com/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>1 year <br />Game Development</p>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__text">
+            <p class="eyebrow"><span class="dot"></span> Associate Game Developer @ OZI Publishers</p>
+            <h1>
+              Hi, I'm <span class="grad">Syed Afeef Abdullah</span>.<br />
+              I build mobile games <em>from scratch</em>.
+            </h1>
+            <p class="hero__lead">
+              Unity (C#) developer from Lahore shipping live mobile games on Google Play. I work on
+              the whole thing: core gameplay, UI, ad monetization, analytics and live ops. I also use
+              AI coding agents to plan and build faster.
+            </p>
+            <div class="hero__actions">
+              <a href="#games" class="btn btn--primary">See my games</a>
+              <a href="assets/Syed_Afeef_Abdullah_CV.pdf" class="btn btn--ghost" target="_blank" rel="noopener">Download CV</a>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. Bachelors Degree,<br /> [In Progress]</p>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/syed-afeef-abdullah-29b423240" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3zm7 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4z"/></svg>
+              </a>
+              <a href="https://github.com/AfeefAbdullah" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+              </a>
+              <a href="mailto:afeef.abdullah17@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.4 7H4v.3l8 5.5 8-5.5V7h-.4z"/></svg>
+              </a>
             </div>
           </div>
-          <div class="text-container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-              reprehenderit et laborum, rem, dolore eum quod voluptate
-              exercitationem nobis, nihil esse debitis maxime facere minus sint
-              delectus velit in eos quo officiis explicabo deleniti dignissimos.
-              Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-              reiciendis ea magnam? Nulla, impedit fuga!
+
+          <div class="hero__card">
+            <div class="avatar">
+              <img src="assets/profile.jpg" alt="Syed Afeef Abdullah" onerror="this.remove()" />
+              <span>SA</span>
+            </div>
+            <ul class="stats">
+              <li><strong>5</strong><span>games shipped<br />from scratch</span></li>
+              <li><strong>2025</strong><span>at OZI Publishers<br />since March</span></li>
+              <li><strong>Unity</strong><span>C# · Android<br />live ops</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- GAMES -->
+      <section id="games" class="section">
+        <div class="container">
+          <div class="section__head">
+            <p class="eyebrow">Shipped on Google Play</p>
+            <h2>Games I've built</h2>
+            <p class="section__sub">
+              Mobile games built from scratch in Unity during 2025 and 2026: gameplay systems, UI,
+              ads mediation, Firebase and GameAnalytics, then tuned after launch.
             </p>
           </div>
+          <div class="games" id="games-grid"><!-- rendered by script.js --></div>
         </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section section--alt">
+        <div class="container">
+          <div class="section__head">
+            <p class="eyebrow">Career</p>
+            <h2>Experience &amp; education</h2>
+          </div>
+
+          <ol class="timeline">
+            <li class="timeline__item timeline__item--current">
+              <div class="timeline__meta">Mar 2025 — Present</div>
+              <div class="timeline__body">
+                <h3>Associate Game Developer</h3>
+                <p class="timeline__org">OZI Publishers · Lahore</p>
+                <ul>
+                  <li>Built several mobile games <strong>from scratch</strong> in Unity (C#), from prototype through Google Play release.</li>
+                  <li>Integrated Ad SDKs and mediation (AdMob, AppLovin and others), which made ad delivery more reliable and improved monetization across live games.</li>
+                  <li>Used Firebase Analytics, Crashlytics and Remote Config to watch performance, change live parameters and cut crashes.</li>
+                  <li>Integrated GameAnalytics to track player behavior, progression and retention.</li>
+                  <li>Fixed runtime errors, SDK conflicts and performance issues in live projects, and kept production updates stable.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__meta">Dec 2024 — Feb 2025</div>
+              <div class="timeline__body">
+                <h3>Game Development Intern</h3>
+                <p class="timeline__org">Smarnovative Labs</p>
+                <ul>
+                  <li>Built 2D and 3D gameplay systems in Unity: player controls, UI interactions and physics-based mechanics.</li>
+                  <li>Used Unity's physics engine for realistic object movement and player interactions.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__meta">Oct 2022 — Jul 2023</div>
+              <div class="timeline__body">
+                <h3>RIVALS: Final Year Project</h3>
+                <p class="timeline__org">Unreal Engine 5 · C++ · Blueprints</p>
+                <ul>
+                  <li>Multiplayer third-person shooter prototype with player movement, shooting systems and power-ups.</li>
+                </ul>
+                <a class="link" href="https://github.com/AfeefAbdullah/Projects/tree/main/Rivals" target="_blank" rel="noopener">View on GitHub →</a>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__meta">Sep 2019 — Jul 2024</div>
+              <div class="timeline__body">
+                <h3>BS Computer Science</h3>
+                <p class="timeline__org">COMSATS University Islamabad, Lahore Campus</p>
+              </div>
+            </li>
+            <li class="timeline__item">
+              <div class="timeline__meta">Aug 2022</div>
+              <div class="timeline__body">
+                <h3>Unreal Engine 5 C++ Multiplayer Shooter</h3>
+                <p class="timeline__org">Udemy · Certificate of Completion</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section__head">
+            <p class="eyebrow">Toolbox</p>
+            <h2>Skills</h2>
+          </div>
+          <div class="skills">
+            <div class="skill-card">
+              <h3>Gameplay &amp; Engine</h3>
+              <ul class="chips">
+                <li>Unity (C#)</li><li>Gameplay Programming</li><li>Mobile Game Development</li>
+                <li>2D &amp; 3D Physics</li><li>Game UI / HUD</li><li>Unreal Engine 5 (C++)</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h3>Monetization &amp; Live Ops</h3>
+              <ul class="chips">
+                <li>AdMob</li><li>AppLovin MAX</li><li>Ads Mediation &amp; Wrappers</li>
+                <li>Firebase Analytics</li><li>Crashlytics</li><li>Remote Config</li><li>GameAnalytics</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h3>Engineering</h3>
+              <ul class="chips">
+                <li>Debugging</li><li>Performance Optimization</li><li>SDK Conflict Resolution</li>
+                <li>Git / Version Control</li><li>Google Play Releases</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI WORKFLOW -->
+      <section id="ai" class="section section--alt">
+        <div class="container">
+          <div class="section__head">
+            <p class="eyebrow">How I work</p>
+            <h2>AI-assisted development (vibe coding)</h2>
+            <p class="section__sub">
+              I use AI coding agents as part of my daily workflow, with structure around them so the
+              output stays reliable and token costs stay low.
+            </p>
+          </div>
+          <div class="ai-grid">
+            <article class="ai-card">
+              <div class="ai-card__icon">01</div>
+              <h3>Planning with agents</h3>
+              <p>I break features into specs and step-by-step plans with an AI agent before writing any code, so each change stays small and reviewable.</p>
+            </article>
+            <article class="ai-card">
+              <div class="ai-card__icon">02</div>
+              <h3>Agent-driven implementation</h3>
+              <p>Agents implement gameplay systems, SDK wiring and tooling. I review, test and integrate the results in Unity.</p>
+            </article>
+            <article class="ai-card">
+              <div class="ai-card__icon">03</div>
+              <h3>Token &amp; context control</h3>
+              <p>I keep project context in Markdown files so agents load only what they need, which keeps token usage down.</p>
+            </article>
+            <article class="ai-card">
+              <div class="ai-card__icon">04</div>
+              <h3>Skills &amp; plugins</h3>
+              <p>I extend agents with skills and plugins for repeatable workflows:</p>
+              <ul class="chips chips--sm">
+                <li>Superpowers</li><li>Ponytail</li><li>Game Dev Plugins</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="contact">
+            <p class="eyebrow">Get in touch</p>
+            <h2>Let's build a game together.</h2>
+            <p class="section__sub">Open to game development roles, collaborations and freelance mobile projects.</p>
+            <div class="contact__links">
+              <a class="btn btn--primary" href="mailto:afeef.abdullah17@gmail.com">afeef.abdullah17@gmail.com</a>
+              <a class="btn btn--ghost" href="https://www.linkedin.com/in/syed-afeef-abdullah-29b423240" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="btn btn--ghost" href="https://github.com/AfeefAbdullah" target="_blank" rel="noopener">GitHub</a>
+            </div>
+            <p class="contact__loc">📍 Lahore, Pakistan</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> Syed Afeef Abdullah</p>
+        <a href="#top">Back to top ↑</a>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Game Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C++</h3>
-                  <p>Fluent</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C#</h3>
-                  <p>Fluent</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Blueprints</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Unity</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Unreal Engine 5</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Niagra VFX</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Game UI/UX</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Animations</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Menu/HUD Design</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Rigging</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Level Design</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2023 John Doe. All Rights Reserved.</p>
-      <p>Attributions: <a href="https://www.vecteezy.com/free-photos">Free Stock photos by Vecteezy</a></p>
     </footer>
+
     <script src="script.js"></script>
-    
   </body>
 </html>
