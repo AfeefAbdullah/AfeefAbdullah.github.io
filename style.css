@@ -1354,18 +1354,32 @@ main,
   right: -50%;
   bottom: 0;
   height: 1100px;
-  background-image:
-    linear-gradient(rgba(124, 92, 255, 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.45) 1px, transparent 1px);
-  background-size: 60px 60px;
+  overflow: hidden;
   transform: perspective(700px) rotateX(64deg);
   transform-origin: 50% 100%;
   mask-image: linear-gradient(to top, #000 5%, transparent 70%);
   -webkit-mask-image: linear-gradient(to top, #000 5%, transparent 70%);
-  animation: grid-run 3.5s linear infinite;
+}
+/* The lines live on a child that slides by exactly one cell and loops.
+   Animating transform (not background-position) keeps it on the GPU,
+   so the browser doesn't repaint the grid every frame. */
+.skills-bg__grid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -60px;
+  bottom: 0;
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.45) 1px, transparent 1px);
+  background-size: 60px 60px;
+  will-change: transform;
+  animation: grid-run 2.4s linear infinite;
 }
 @keyframes grid-run {
-  to { background-position: 0 60px, 0 0; }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 60px, 0); }
 }
 .skills-bg__orb {
   position: absolute;
@@ -1410,9 +1424,7 @@ main,
 .section--fx .loadout {
   background:
     linear-gradient(rgba(124, 92, 255, 0.05) 1px, transparent 1px) 0 0 / 100% 26px,
-    linear-gradient(180deg, rgba(21, 25, 39, 0.72), rgba(16, 19, 29, 0.78));
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+    linear-gradient(180deg, rgba(21, 25, 39, 0.8), rgba(16, 19, 29, 0.85));
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
 }
 .section--fx .slot {
