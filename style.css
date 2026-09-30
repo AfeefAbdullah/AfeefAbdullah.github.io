@@ -1381,6 +1381,13 @@ main,
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(0, 60px, 0); }
 }
+/* The grid appears much larger on wide screens, so the same speed looks
+   fast there; slow it down (phones keep the 2.4s loop). */
+@media (min-width: 861px) {
+  .skills-bg__grid::before {
+    animation-duration: 6s;
+  }
+}
 .skills-bg__orb {
   position: absolute;
   width: 460px;
