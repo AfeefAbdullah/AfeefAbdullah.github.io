@@ -534,7 +534,32 @@ function burst() {
   }
 }
 
+/* ---------- Analytics: count important clicks as GoatCounter events ---------- */
+// Page views are counted automatically by the GoatCounter script in index.html.
+// These show up in the dashboard as extra "pages" such as "cv-download" or "game-cat-customs-simulator".
+function trackClicks() {
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href]");
+    if (!a || !window.goatcounter || !window.goatcounter.count) return;
+    const href = a.getAttribute("href");
+    let path = null;
+    let title = a.textContent.trim() || a.getAttribute("aria-label") || "";
+    if (href.endsWith(".pdf")) path = "cv-download";
+    else if (href.includes("play.google.com")) {
+      const g = games.find((x) => href.includes(x.id));
+      path = `game-${g ? g.slug : "other"}`;
+      title = g ? g.title : title;
+    } else if (href.startsWith("mailto:")) path = "click-email";
+    else if (href.includes("linkedin.com")) path = "click-linkedin";
+    else if (href.includes("github.com")) path = "click-github";
+    if (!path) return;
+    const where = a.closest("section")?.id || "hero";
+    window.goatcounter.count({ path, title: `${title} (${where})`, event: true });
+  });
+}
+
 renderGames();
+trackClicks();
 renderLoadout();
 skillsStars();
 skillsFloat();
