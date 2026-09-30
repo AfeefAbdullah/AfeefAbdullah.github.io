@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="progress" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
     <header class="nav" id="top">
       <div class="container nav__inner">
         <a href="#top" class="nav__logo">afeef<span>.dev</span></a>
@@ -43,6 +45,7 @@
     <main>
       <!-- HERO -->
       <section class="hero">
+        <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
         <div class="container hero__inner">
           <div class="hero__text">
             <p class="eyebrow"><span class="dot"></span> Associate Game Developer @ OZI Publishers</p>
@@ -50,6 +53,7 @@
               Hi, I'm <span class="grad">Syed Afeef Abdullah</span>.<br />
               I build mobile games <em>from scratch</em>.
             </h1>
+            <p class="typer" aria-label="Unity game developer"><span class="typer__prompt">&gt;</span> <span id="typer">Unity Game Developer</span><span class="typer__caret"></span></p>
             <p class="hero__lead">
               Unity (C#) developer from Lahore shipping live mobile games on Google Play. I work on
               the whole thing: core gameplay, UI, ad monetization, analytics and live ops. I also use
@@ -72,13 +76,13 @@
             </div>
           </div>
 
-          <div class="hero__card">
+          <div class="hero__card tilt">
             <div class="avatar">
               <img src="assets/profile.jpg" alt="Syed Afeef Abdullah" onerror="this.remove()" />
               <span>SA</span>
             </div>
             <ul class="stats">
-              <li><strong>5</strong><span>games shipped<br />from scratch</span></li>
+              <li><strong data-count="5">5</strong><span>games shipped<br />from scratch</span></li>
               <li><strong>2025</strong><span>at OZI Publishers<br />since March</span></li>
               <li><strong>Unity</strong><span>C# · Android<br />live ops</span></li>
             </ul>
@@ -260,6 +264,9 @@
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>
+
+    <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+    <div class="toast" id="toast" role="status"></div>
 
     <script src="script.js"></script>
   </body>
