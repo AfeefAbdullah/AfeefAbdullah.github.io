@@ -534,10 +534,9 @@ function burst() {
   }
 }
 
-/* ---------- Analytics: count important clicks (GoatCounter + Google Analytics) ---------- */
-// Page views are counted automatically by the scripts in index.html.
-// GoatCounter shows these as extra "pages" such as "cv-download" or "game-cat-customs-simulator";
-// GA4 receives them as a "portfolio_click" event with `target` and `section` parameters.
+/* ---------- Analytics: count important clicks (Google Analytics) ---------- */
+// Page views are counted automatically by the GA4 tag in index.html.
+// GA4 receives clicks as a "portfolio_click" event with `target`, `label` and `section` parameters.
 function trackClicks() {
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a[href]");
@@ -555,9 +554,6 @@ function trackClicks() {
     else if (href.includes("github.com")) path = "click-github";
     if (!path) return;
     const where = a.closest("section")?.id || "hero";
-    if (window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count({ path, title: `${title} (${where})`, event: true });
-    }
     if (typeof window.gtag === "function") {
       window.gtag("event", "portfolio_click", { target: path, label: title, section: where });
     }
