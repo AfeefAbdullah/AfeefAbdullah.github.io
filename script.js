@@ -555,7 +555,12 @@ function trackClicks() {
     if (!path) return;
     const where = a.closest("section")?.id || "hero";
     if (typeof window.gtag === "function") {
-      window.gtag("event", "portfolio_click", { target: path, label: title, section: where });
+      window.gtag("event", "portfolio_click", {
+        target: path,
+        label: title,
+        section: where,
+        visit_time: typeof window.visitTime === "function" ? window.visitTime() : undefined,
+      });
     }
   });
 }

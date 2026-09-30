@@ -27,8 +27,16 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
+      // Exact visit time in Pakistan time (e.g. "2026-09-30 14:53:07"), shown as "Visit time" in GA4
+      function visitTime() {
+        try {
+          return new Date().toLocaleString("sv-SE", { timeZone: "Asia/Karachi" });
+        } catch (e) {
+          return new Date().toISOString().replace("T", " ").slice(0, 19) + " UTC";
+        }
+      }
       gtag("js", new Date());
-      gtag("config", "G-BFHJJLZPHJ");
+      gtag("config", "G-BFHJJLZPHJ", { visit_time: visitTime() });
     </script>
   </head>
   <body>
