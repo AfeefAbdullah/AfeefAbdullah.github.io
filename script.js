@@ -182,6 +182,21 @@ function renderLoadout() {
     .join("");
 }
 
+/* ---------- Skills backdrop: twinkling stars ---------- */
+function skillsStars() {
+  const box = document.getElementById("skills-stars");
+  if (!box) return;
+  const n = window.innerWidth < 640 ? 28 : 55;
+  let html = "";
+  for (let i = 0; i < n; i++) {
+    const size = Math.random() < 0.15 ? 3 : Math.random() < 0.5 ? 2 : 1;
+    html += `<i style="left:${(Math.random() * 100).toFixed(2)}%;top:${(Math.random() * 70).toFixed(2)}%;` +
+      `width:${size}px;height:${size}px;animation-delay:${(Math.random() * 4).toFixed(2)}s;` +
+      `animation-duration:${(2.5 + Math.random() * 3).toFixed(2)}s"></i>`;
+  }
+  box.innerHTML = html;
+}
+
 /* ---------- Navigation ---------- */
 function toggleMenu() {
   const links = document.getElementById("nav-links");
@@ -487,6 +502,7 @@ function burst() {
 
 renderGames();
 renderLoadout();
+skillsStars();
 activeNav();
 onScroll();
 revealOnScroll();

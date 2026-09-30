@@ -1330,6 +1330,95 @@ main,
   }
 }
 
+/* Skills backdrop: game-menu grid floor, stars and drifting light */
+.section--fx {
+  padding-bottom: 170px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.section--fx > .container {
+  position: relative;
+  z-index: 1;
+}
+.skills-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(1200px 500px at 50% 110%, rgba(124, 92, 255, 0.18), transparent 70%);
+}
+.skills-bg__grid {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 1100px;
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.45) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(700px) rotateX(64deg);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to top, #000 5%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to top, #000 5%, transparent 70%);
+  animation: grid-run 3.5s linear infinite;
+}
+@keyframes grid-run {
+  to { background-position: 0 60px, 0 0; }
+}
+.skills-bg__orb {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+}
+.skills-bg__orb--1 {
+  top: 5%;
+  left: -8%;
+  background: #7c5cff;
+  animation: orb-drift 16s ease-in-out infinite alternate;
+}
+.skills-bg__orb--2 {
+  bottom: 0;
+  right: -10%;
+  background: #22d3ee;
+  opacity: 0.25;
+  animation: orb-drift 20s ease-in-out infinite alternate-reverse;
+}
+@keyframes orb-drift {
+  to { transform: translate(18vw, 60px) scale(1.15); }
+}
+.skills-bg__stars {
+  position: absolute;
+  inset: 0;
+}
+.skills-bg__stars i {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(170, 160, 255, 0.9);
+  opacity: 0.15;
+  animation: twinkle ease-in-out infinite;
+}
+@keyframes twinkle {
+  50% { opacity: 0.9; transform: scale(1.4); }
+}
+/* Glass cards so the backdrop shows through */
+.section--fx .loadout {
+  background:
+    linear-gradient(rgba(124, 92, 255, 0.05) 1px, transparent 1px) 0 0 / 100% 26px,
+    linear-gradient(180deg, rgba(21, 25, 39, 0.72), rgba(16, 19, 29, 0.78));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+.section--fx .slot {
+  background: rgba(11, 13, 20, 0.7);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .ai-grid {
@@ -1404,6 +1493,9 @@ main,
   }
   .section {
     padding: 64px 0;
+  }
+  .section--fx {
+    padding-bottom: 120px;
   }
   .ai-grid {
     grid-template-columns: 1fr;
