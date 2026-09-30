@@ -1,6 +1,6 @@
 // Games shown in the "Games I've built" section.
 // To use the real Play Store icon, save it as assets/games/<slug>.png
-// (512x512 works best). Until then a generated tile is shown.
+// (512x512 works best). Without it a gradient tile with the emoji is shown.
 const PLAY = "https://play.google.com/store/apps/details?id=";
 
 const games = [
@@ -63,7 +63,7 @@ function renderGames() {
     .map(
       (g) => `
       <a class="game${g.latest ? " game--latest" : ""}" href="${PLAY}${g.id}" target="_blank" rel="noopener">
-        <div class="game__art" style="--c1:${g.colors[0]};--c2:${g.colors[1]}">
+        <div class="game__art" style="--c1:${g.colors[0]};--c2:${g.colors[1]};--img:url('assets/games/${g.slug}.png')">
           <span class="game__emoji" aria-hidden="true">${g.emoji}</span>
           <img src="assets/games/${g.slug}.png" alt="${g.title} icon" loading="lazy" onerror="this.remove()" />
           ${g.latest ? '<span class="badge">Latest</span>' : ""}
