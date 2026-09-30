@@ -197,6 +197,40 @@ function skillsStars() {
   box.innerHTML = html;
 }
 
+/* ---------- Skills backdrop: floating game-controller shapes ---------- */
+function skillsFloat() {
+  const box = document.getElementById("skills-float");
+  if (!box || reduceMotion) return;
+  const section = box.closest("section");
+  const SHAPES = {
+    triangle: '<path d="M12 4 21 19H3z"/>',
+    circle: '<circle cx="12" cy="12" r="8"/>',
+    cross: '<path d="M5 5l14 14M19 5 5 19"/>',
+    square: '<rect x="4.5" y="4.5" width="15" height="15" rx="1.5"/>',
+    plus: '<path d="M12 4v16M4 12h16"/>',
+    pixel: '<rect x="7" y="7" width="10" height="10" class="solid"/>',
+  };
+  const kinds = Object.keys(SHAPES);
+  const colors = ["#7c5cff", "#22d3ee", "#ff4f8b", "#a78bfa"];
+  const n = window.innerWidth < 640 ? 12 : 22;
+  let html = "";
+  for (let i = 0; i < n; i++) {
+    const kind = kinds[i % kinds.length];
+    const size = Math.round(14 + Math.random() * 22);
+    const dur = 22 + Math.random() * 20;
+    html +=
+      `<svg viewBox="0 0 24 24" style="left:${(Math.random() * 96).toFixed(1)}%;width:${size}px;height:${size}px;` +
+      `color:${colors[i % colors.length]};--o:${(0.22 + Math.random() * 0.3).toFixed(2)};` +
+      `--dx:${Math.round((Math.random() - 0.5) * 120)}px;--rot:${Math.round((Math.random() - 0.5) * 540)}deg;` +
+      `animation-duration:${dur.toFixed(1)}s;animation-delay:-${(Math.random() * dur).toFixed(1)}s">${SHAPES[kind]}</svg>`;
+  }
+  box.innerHTML = html;
+  // Shapes travel the full height of the section.
+  const setRise = () => box.style.setProperty("--rise", `-${section.offsetHeight + 120}px`);
+  setRise();
+  window.addEventListener("resize", setRise);
+}
+
 /* ---------- Navigation ---------- */
 function toggleMenu() {
   const links = document.getElementById("nav-links");
@@ -503,6 +537,7 @@ function burst() {
 renderGames();
 renderLoadout();
 skillsStars();
+skillsFloat();
 activeNav();
 onScroll();
 revealOnScroll();

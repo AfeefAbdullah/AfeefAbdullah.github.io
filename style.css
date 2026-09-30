@@ -1332,7 +1332,6 @@ main,
 
 /* Skills backdrop: game-menu grid floor, stars and drifting light */
 .section--fx {
-  padding-bottom: 170px;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -1348,45 +1347,34 @@ main,
   pointer-events: none;
   background: radial-gradient(1200px 500px at 50% 110%, rgba(124, 92, 255, 0.18), transparent 70%);
 }
-.skills-bg__grid {
+.skills-bg__float {
   position: absolute;
-  left: -50%;
-  right: -50%;
-  bottom: 0;
-  height: 1100px;
-  overflow: hidden;
-  transform: perspective(700px) rotateX(64deg);
-  transform-origin: 50% 100%;
-  mask-image: linear-gradient(to top, #000 5%, transparent 70%);
-  -webkit-mask-image: linear-gradient(to top, #000 5%, transparent 70%);
+  inset: 0;
 }
-/* The lines live on a child that slides by exactly one cell and loops.
-   Animating transform (not background-position) keeps it on the GPU,
-   so the browser doesn't repaint the grid every frame. */
-.skills-bg__grid::before {
-  content: "";
+.skills-bg__float svg {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: -60px;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(124, 92, 255, 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.45) 1px, transparent 1px);
-  background-size: 60px 60px;
-  will-change: transform;
-  animation: grid-run 2.4s linear infinite;
+  top: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px currentColor);
+  will-change: transform, opacity;
+  animation-name: float-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
-@keyframes grid-run {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(0, 60px, 0); }
+.skills-bg__float .solid {
+  fill: currentColor;
+  stroke: none;
 }
-/* The grid appears much larger on wide screens, so the same speed looks
-   fast there; slow it down (phones keep the 2.4s loop). */
-@media (min-width: 861px) {
-  .skills-bg__grid::before {
-    animation-duration: 6s;
-  }
+@keyframes float-up {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: var(--o); }
+  85% { opacity: var(--o); }
+  100% { transform: translate3d(var(--dx), var(--rise, -1000px), 0) rotate(var(--rot)); opacity: 0; }
 }
 .skills-bg__orb {
   position: absolute;
@@ -1512,9 +1500,6 @@ main,
   }
   .section {
     padding: 64px 0;
-  }
-  .section--fx {
-    padding-bottom: 120px;
   }
   .ai-grid {
     grid-template-columns: 1fr;
