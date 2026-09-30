@@ -567,6 +567,53 @@ function trackClicks() {
 
 renderGames();
 trackClicks();
+
+/* ---------- Back to top ---------- */
+// "#top" is the sticky nav, which is always at the current scroll position, so the
+// browser's default jump barely moves. Animate the page to 0 ourselves instead.
+function scrollToTopLinks() {
+  const root = document.documentElement;
+  let raf = 0;
+  const stop = () => {
+    cancelAnimationFrame(raf);
+    root.style.scrollBehavior = "";
+    ["wheel", "touchstart", "keydown"].forEach((t) => window.removeEventListener(t, stop));
+  };
+
+  const scrollTop = () => {
+    const start = window.scrollY;
+    if (start <= 0) return;
+    if (reduceMotion) return window.scrollTo(0, 0);
+    // Longer distance → slightly longer glide, but never sluggish.
+    const duration = Math.min(1100, Math.max(450, start * 0.25));
+    const t0 = performance.now();
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2); // easeInOutCubic
+    root.style.scrollBehavior = "auto"; // CSS smooth scrolling would fight the per-frame updates
+    // Let the visitor take over if they scroll during the animation.
+    ["wheel", "touchstart", "keydown"].forEach((t) => window.addEventListener(t, stop, { passive: true }));
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / duration);
+      window.scrollTo(0, Math.round(start * (1 - ease(p))));
+      if (p < 1) raf = requestAnimationFrame(step);
+      else stop();
+    };
+    raf = requestAnimationFrame(step);
+  };
+
+  document.querySelectorAll('a[href="#top"]').forEach((a) =>
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeMenu();
+      if (a.classList.contains("to-top")) {
+        a.classList.remove("launch");
+        void a.offsetWidth; // restart the animation
+        a.classList.add("launch");
+      }
+      scrollTop();
+      history.replaceState(null, "", location.pathname + location.search);
+    })
+  );
+}
 renderLoadout();
 skillsStars();
 skillsFloat();
@@ -579,4 +626,5 @@ tiltCards();
 pointerFx();
 heroParticles();
 konami();
+scrollToTopLinks();
 document.getElementById("year").textContent = new Date().getFullYear();

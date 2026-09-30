@@ -1077,6 +1077,16 @@ main,
 }
 .to-top:hover {
   border-color: var(--accent);
+  box-shadow: 0 8px 24px -8px rgba(124, 92, 255, 0.7);
+}
+/* Click feedback: the button lifts off and settles back while the page glides up */
+.to-top.launch {
+  animation: to-top-launch 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+@keyframes to-top-launch {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-10px) scale(1.08); border-color: var(--accent-2); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 /* Toast + confetti (Konami code easter egg) */
