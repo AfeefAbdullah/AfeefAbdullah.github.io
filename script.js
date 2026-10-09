@@ -12,7 +12,7 @@ const games = [
     featured: true,
     emoji: "🐶",
     colors: ["#4fc3ff", "#ffb347"],
-    blurb: "My best work yet: a physics-based party brawler built on an active-ragdoll system, with wobbly, fully simulated animals that punch, grab, lift and throw each other. Three modes: Wrestling on the ice (throw your rival into the water), Football (1v1 to 3v3 with AI teammates) and Last Man Standing (a 6-bot free-for-all with crowbar pickups), plus a city to roam with NPCs that fight back. Built from scratch in Unity for Android.",
+    blurb: "My best work yet: an active-ragdoll party brawler where wobbly animals punch, grab and throw each other across three modes (Wrestling, Football with AI teammates, Last Man Standing) and a city full of NPCs that fight back. Built from scratch in Unity for Android.",
     tags: ["Unity", "C#", "Active Ragdoll", "Physics Combat", "AI Bots", "Android"],
   },
   {
