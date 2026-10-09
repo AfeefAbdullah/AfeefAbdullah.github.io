@@ -12,15 +12,14 @@ const games = [
     featured: true,
     emoji: "🐶",
     colors: ["#4fc3ff", "#ffb347"],
-    blurb: "My best work yet: a chaotic, physics-based party brawler. Fight your friends as puppies, kittens and other crazy animals, knock rivals out, throw them around, or team up to complete objectives in interactive arenas. Built from scratch in Unity.",
-    tags: ["Unity", "C#", "Physics Combat", "Team Modes", "Interactive Arenas"],
+    blurb: "My best work yet: a physics-based party brawler built on an active-ragdoll system, with wobbly, fully simulated animals that punch, grab, lift and throw each other. Three modes: Wrestling on the ice (throw your rival into the water), Football (1v1 to 3v3 with AI teammates) and Last Man Standing (a 6-bot free-for-all with crowbar pickups), plus a city to roam with NPCs that fight back. Built from scratch in Unity for Android.",
+    tags: ["Unity", "C#", "Active Ragdoll", "Physics Combat", "AI Bots", "Android"],
   },
   {
     slug: "cat-customs-simulator",
     title: "Cat Customs Security Simulator",
     id: "com.gss.cat.custom.simulator",
     genre: "Role Playing",
-    wide: true,
     emoji: "🐱",
     colors: ["#ff9a5a", "#ff4f8b"],
     blurb: "A cozy border-inspection sim: check cat travelers' passports, scan their luggage for contraband and decide who gets through. Built from scratch in Unity.",
@@ -76,7 +75,7 @@ function renderGames() {
   grid.innerHTML = games
     .map(
       (g, i) => `
-      <a class="game tilt${g.featured ? " game--featured" : ""}${g.wide ? " game--wide" : ""}" style="--i:${i}" href="${PLAY}${g.id}" target="_blank" rel="noopener">
+      <a class="game tilt${g.featured ? " game--featured" : ""}" style="--i:${i}" href="${PLAY}${g.id}" target="_blank" rel="noopener">
         <div class="game__art" style="--c1:${g.colors[0]};--c2:${g.colors[1]};--img:url('assets/games/${g.slug}.png')">
           <span class="game__emoji" aria-hidden="true">${g.emoji}</span>
           <img src="assets/games/${g.slug}.png" alt="${g.title} icon" loading="lazy" onerror="this.remove()" />
@@ -390,7 +389,7 @@ function countUp() {
 function tiltCards() {
   if (!finePointer || reduceMotion) return;
   document.querySelectorAll(".tilt").forEach((card) => {
-    const max = card.classList.contains("game--featured") ? 3 : card.classList.contains("game--wide") ? 4 : 8;
+    const max = card.classList.contains("game--featured") ? 3 : 8;
     card.addEventListener("pointermove", (e) => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width;

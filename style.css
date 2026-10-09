@@ -440,9 +440,6 @@ ul {
   border-color: rgba(124, 92, 255, 0.7);
   box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.15), 0 30px 70px -35px rgba(124, 92, 255, 0.7);
 }
-.game--wide {
-  border-color: rgba(124, 92, 255, 0.4);
-}
 .badges {
   position: absolute;
   top: 14px;
@@ -460,50 +457,42 @@ ul {
   color: #2a1a00;
 }
 
-@media (min-width: 980px) {
-  .game--featured,
-  .game--wide {
-    flex-direction: row;
-  }
+/* Featured game: full width on tablet, a 2x2 bento tile on desktop.
+   All other games stay the same size. */
+@media (min-width: 641px) {
   .game--featured {
     grid-column: 1 / -1;
   }
-  .game--wide {
-    grid-column: span 2;
+  .game--featured .game__body h3 {
+    font-size: 1.9rem;
   }
-  .game--featured .game__art,
-  .game--wide .game__art {
-    width: 50%;
-    aspect-ratio: auto;
-    min-height: 380px;
+}
+@media (min-width: 980px) {
+  .games {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .game--featured {
+    grid-column: span 2;
+    grid-row: span 2;
   }
   .game--featured .game__art {
-    min-height: 440px;
-  }
-  .game--featured .game__art img,
-  .game--wide .game__art img {
-    width: 70%;
-    max-width: 300px;
+    flex: 1;
+    aspect-ratio: auto;
+    min-height: 420px;
   }
   .game--featured .game__art img {
-    max-width: 340px;
-  }
-  .game--featured .game__body,
-  .game--wide .game__body {
-    justify-content: center;
-    padding: 36px;
+    width: 52%;
+    max-width: 380px;
   }
   .game--featured .game__body {
-    padding: 44px;
+    flex: none;
+    padding: 30px 34px 32px;
   }
   .game--featured .game__body h3 {
-    font-size: 2.3rem;
-  }
-  .game--wide .game__body h3 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
   .game--featured .game__body > p:not(.game__genre) {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
   }
 }
 
@@ -594,6 +583,13 @@ ul {
   color: var(--muted);
   font-size: 0.95rem;
   margin: 0 0 16px;
+}
+
+.game__body .chips {
+  margin-top: auto;
+}
+.game__body .chips + .game__cta {
+  margin-top: 0;
 }
 
 .game__cta {
