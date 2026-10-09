@@ -457,42 +457,72 @@ ul {
   color: #2a1a00;
 }
 
-/* Featured game: full width on tablet, a 2x2 bento tile on desktop.
-   All other games stay the same size. */
+/* Featured game: a compact full-width banner (icon left, text right) on
+   tablet and up. The other games share one card size; a short last row is
+   centered instead of left-aligned. */
 @media (min-width: 641px) {
+  .games {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .game {
+    grid-column: span 2;
+  }
   .game--featured {
     grid-column: 1 / -1;
+    flex-direction: row;
+  }
+  .game--featured .game__art {
+    width: 42%;
+    flex: none;
+    aspect-ratio: auto;
+    min-height: 320px;
+  }
+  .game--featured .game__art img {
+    width: 62%;
+    max-width: 240px;
+  }
+  .game--featured .game__body {
+    justify-content: center;
+    padding: 28px 30px;
   }
   .game--featured .game__body h3 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
+  }
+  /* odd number of regular games: center the lone last card */
+  .game:last-child:nth-child(even) {
+    grid-column: 2 / span 2;
   }
 }
 @media (min-width: 980px) {
   .games {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
-  .game--featured {
+  .game:last-child:nth-child(even) {
     grid-column: span 2;
-    grid-row: span 2;
+  }
+  /* last row of two: start one column in so the pair is centered */
+  .game:nth-last-child(2):nth-child(3n + 2) {
+    grid-column: 2 / span 2;
+  }
+  /* last row of one: center it */
+  .game:last-child:nth-child(3n + 2) {
+    grid-column: 3 / span 2;
   }
   .game--featured .game__art {
-    flex: 1;
-    aspect-ratio: auto;
-    min-height: 420px;
+    width: 44%;
+    min-height: 340px;
   }
   .game--featured .game__art img {
-    width: 52%;
-    max-width: 380px;
+    max-width: 260px;
   }
   .game--featured .game__body {
-    flex: none;
-    padding: 30px 34px 32px;
+    padding: 34px 40px;
   }
   .game--featured .game__body h3 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
   .game--featured .game__body > p:not(.game__genre) {
-    font-size: 1.02rem;
+    font-size: 1rem;
   }
 }
 
