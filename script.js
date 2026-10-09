@@ -5,14 +5,25 @@ const PLAY = "https://play.google.com/store/apps/details?id=";
 
 const games = [
   {
+    slug: "zoo-party",
+    title: "Zoo Party",
+    id: "com.acex.party.animals",
+    genre: "Party Action",
+    featured: true,
+    emoji: "🐶",
+    colors: ["#4fc3ff", "#ffb347"],
+    blurb: "My best work yet: a chaotic, physics-based party brawler. Fight your friends as puppies, kittens and other crazy animals, knock rivals out, throw them around, or team up to complete objectives in interactive arenas. Built from scratch in Unity.",
+    tags: ["Unity", "C#", "Physics Combat", "Team Modes", "Interactive Arenas"],
+  },
+  {
     slug: "cat-customs-simulator",
     title: "Cat Customs Security Simulator",
     id: "com.gss.cat.custom.simulator",
     genre: "Role Playing",
-    latest: true,
+    wide: true,
     emoji: "🐱",
     colors: ["#ff9a5a", "#ff4f8b"],
-    blurb: "A cozy border-inspection sim: check cat travelers' passports, scan their luggage for contraband and decide who gets through. My latest release, built from scratch in Unity.",
+    blurb: "A cozy border-inspection sim: check cat travelers' passports, scan their luggage for contraband and decide who gets through. Built from scratch in Unity.",
     tags: ["Unity", "C#", "Ads Mediation", "Firebase"],
   },
   {
@@ -65,11 +76,11 @@ function renderGames() {
   grid.innerHTML = games
     .map(
       (g, i) => `
-      <a class="game tilt${g.latest ? " game--latest" : ""}" style="--i:${i}" href="${PLAY}${g.id}" target="_blank" rel="noopener">
+      <a class="game tilt${g.featured ? " game--featured" : ""}${g.wide ? " game--wide" : ""}" style="--i:${i}" href="${PLAY}${g.id}" target="_blank" rel="noopener">
         <div class="game__art" style="--c1:${g.colors[0]};--c2:${g.colors[1]};--img:url('assets/games/${g.slug}.png')">
           <span class="game__emoji" aria-hidden="true">${g.emoji}</span>
           <img src="assets/games/${g.slug}.png" alt="${g.title} icon" loading="lazy" onerror="this.remove()" />
-          ${g.latest ? '<span class="badge">Latest</span>' : ""}
+          ${g.featured ? '<span class="badges"><span class="badge">Latest</span><span class="badge badge--best">★ Best work</span></span>' : ""}
           <span class="game__play" aria-hidden="true">▶</span>
         </div>
         <div class="game__body">
@@ -114,7 +125,7 @@ const loadout = [
   {
     title: "Gameplay & Engine",
     items: [
-      { name: "Unity", logo: "unity", tint: "#e8ebf5", note: "Used in all 5 shipped games", core: true },
+      { name: "Unity", logo: "unity", tint: "#e8ebf5", note: "Used in all 6 shipped games", core: true },
       { name: "C#", text: "C#", tint: "#a179dc", note: "Gameplay systems & tools", core: true },
       { name: "Physics", glyph: "physics", tint: "#22d3ee", note: "2D & 3D physics-based mechanics" },
       { name: "Game UI / HUD", glyph: "ui", tint: "#7c5cff", note: "Menus, HUD & UX flows" },
@@ -379,7 +390,7 @@ function countUp() {
 function tiltCards() {
   if (!finePointer || reduceMotion) return;
   document.querySelectorAll(".tilt").forEach((card) => {
-    const max = card.classList.contains("game--latest") ? 4 : 8;
+    const max = card.classList.contains("game--featured") ? 3 : card.classList.contains("game--wide") ? 4 : 8;
     card.addEventListener("pointermove", (e) => {
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width;
